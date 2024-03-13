@@ -1,0 +1,13 @@
+.main-container{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .login-card{
+        padding: 20px;
+    }
+    .bottom-text{
+        padding: 10px 0px;
+    }
+}

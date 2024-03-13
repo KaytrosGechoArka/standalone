@@ -1,0 +1,53 @@
+<app-header></app-header>
+<div class="main-container">
+  <div>
+    <div class="">
+        <h1>Posted Lists</h1>
+        <button (click)="showAddForm()">Add Post</button>
+    </div> 
+    <ul>
+      <li *ngFor="let post of posts">
+        <div>
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title" [(ngModel)]="post.title" required>
+        </div>
+        <div>
+          <label for="views">Views:</label>
+          <input type="number" id="views" name="views" [(ngModel)]="post.views" required>
+        </div>
+        <!-- Add other input fields for each attribute -->
+        <button (click)="openUpdateForm(post)">Update</button>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="showAddPostForm">
+    <h2>Add Post</h2>
+    <form (ngSubmit)="addPost()" #addForm="ngForm">
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" [(ngModel)]="newPost.title" required>
+      <label for="views">Views:</label>
+      <input type="number" id="views" name="views" [(ngModel)]="newPost.views" required>
+      <!-- Add other input fields for additional attributes -->
+      <button type="submit">Save</button>
+      <button type="button" (click)="cancelAddForm()">Cancel</button>
+    </form>
+  </div>
+  <div *ngIf="showUpdateForm">
+    <div class="modal">
+      <form (ngSubmit)="submitForm()" #updateForm="ngForm">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" [(ngModel)]="selectedPost.title" required>
+        
+        <!-- Add other form fields for each attribute -->
+        <label for="attribute1">Views:</label>
+        <input type="text" id="views" name="views" [(ngModel)]="selectedPost.views" required>
+        
+        <!-- Add more input fields for other attributes -->
+        
+        <button type="submit">{{ selectedPost.id ? 'Update' : 'Insert' }}</button>
+        <button type="button" (click)="closeUpdateForm()">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>
+

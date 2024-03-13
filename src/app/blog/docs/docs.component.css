@@ -1,0 +1,13 @@
+.main-container{
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+li{
+    display: flex;
+    margin-bottom: 15px;
+}
+li input{
+    height: 30px;
+}
